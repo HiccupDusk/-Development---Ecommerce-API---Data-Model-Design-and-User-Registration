@@ -26,19 +26,19 @@ const userSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
-	enrollments: [
+	items: [
 		{
-			courseId: {
+			productsId: {
 				type: String,
-				required: [true, "Course ID is required"]
+				required: [true, "product ID is required"]
 			},
-			enrolledOn: {
+			boughtOn: {
 				type: Date,
 				default: new Date()
 			},
 			status: {
 				type: String,
-				default: "Enrolled"
+				default: "bought"
 			}
 		}
 
