@@ -37,8 +37,8 @@ const userSchema = new mongoose.Schema({
 				default: new Date()
 			},
 			status: {
-				type: String,
-				default: "bought"
+				type: Boolean,
+				default: true
 			}
 		}
 

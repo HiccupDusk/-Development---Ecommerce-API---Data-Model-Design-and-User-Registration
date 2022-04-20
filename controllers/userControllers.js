@@ -124,7 +124,14 @@ module.exports.retrieveOrders = (data) => {
 
 // RETRIEVE ALL ORDERS (ADMIN))-----------------------------------------------------------------------------
 module.exports.retrieveAllOrders = () => {
-	return User.find({},{_id: 0, items: 1 }).then(result => {
+	return User.find({items:{$elemMatch:{status:true}}},{_id: 0, items: 1, firstName: 2}).then(result => {
+		return result;
+	}) 
+}
+
+//RETRIEVE ALL USERS INFO (ADMIN) ))-----------------------------------------------------------------------------
+module.exports.getAllUser = () => {
+	return User.find({}).then(result => {
 		return result;
 	}) 
 }
