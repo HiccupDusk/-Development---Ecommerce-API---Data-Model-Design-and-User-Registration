@@ -11,6 +11,11 @@ router.get("/getAllActiveProducts", (req, res) =>{
 	ProductControllers.getAllActiveProducts().then(result => res.send(result));
 })
 
+// GET SINGLE PROCDUCTS -----------------------------------------------------------------------------
+router.get("/getSingleProduct/:productIds", (req, res) =>{
+	ProductControllers.getSingleProducts(req.params.productIds).then(result => res.send(result));
+})
+
 // CREATE A PRODUCT (ADMIN ONLY) -----------------------------------------------------------------------------
 router.post("/createProduct/", auth.verify, (req, res) => {
 

@@ -10,6 +10,14 @@ module.exports.getAllActiveProducts = () => {
 	}) 
 }
 
+// GET SINGLE PROCDUCTS -----------------------------------------------------------------------------
+module.exports.getSingleProducts = (productId) => {
+	return Products.findById(productId).then(result => {
+		return result;
+	}) 
+}
+
+
 // CREATE A PRODUCT (ADMIN ONLY) -----------------------------------------------------------------------------
  module.exports.createProduct = (reqBody) => {
 
