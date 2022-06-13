@@ -1,12 +1,12 @@
 // SETUP DEPENDENCIES-------------------------------------------------------------------------------------------------------------------------
-const express = require("express");
-const mongoose = require("mongoose");
+const express = require('express');
+const mongoose = require('mongoose');
 require('dotenv').config();
-const cors = require("cors");
+const cors = require('cors');
 
 //routes-------------------------------------------------------------------------------------------------------------------------
-const userRoutes = require("./routes/userRoutes");
-const productsRoutes = require("./routes/productsRoutes");
+const userRoutes = require('./routes/userRoutes');
+const productsRoutes = require('./routes/productsRoutes');
 
 //server-------------------------------------------------------------------------------------------------------------------------
 const app = express();
@@ -14,21 +14,23 @@ const app = express();
 //Allows all resources/origins to access our backend application-------------------------------------------------------------------------------------------------------------------------
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({  extended:true }));
+app.use(express.urlencoded({ extended: true }));
 
 //http://localhost:4000/api/users-------------------------------------------------------------------------------------------------------------------------
-app.use("/api/users", userRoutes);
+app.use('/api/users', userRoutes);
 //http://localhost:4000/api/products-------------------------------------------------------------------------------------------------------------------------
-app.use("/api/products", productsRoutes);
+app.use('/api/products', productsRoutes);
 
 //Connect to our MongoDB connection-------------------------------------------------------------------------------------------------------------------------
 mongoose.connect(process.env.DB_CONNECTION, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-})
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas'));
+mongoose.connection.once('open', () =>
+  console.log('Now connected to MongoDB Atlas')
+);
 
 app.listen(process.env.PORT, () => {
-	console.log(`API is now online on port ${process.env.PORT}`)
-})
+  console.log(`API is now online on port ${process.env.PORT}`);
+});
